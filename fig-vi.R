@@ -12,6 +12,7 @@ diamonds.rest.nonJ<-subset(diamonds, diamonds$cut != "Ideal" & diamonds$color !=
 #6 Exercise
 setwd("./")
 pdf("fig-vi.pdf")
-histogram(~price|cut+color, data=diamonds.rest.nonJ)
-ggplot(diamonds.rest.nonJ,aes(x=price)) + geom_histogram(aes(y=..ncount..))+facet_grid(cut~color)
+hist.lattice<-histogram(~price|cut+color, data=diamonds.rest.nonJ)
+hist.gg<-ggplot(diamonds.rest.nonJ,aes(x=price)) + geom_histogram(aes(y=..ncount..))+facet_grid(cut~color)
+grid.arrange(hist.lattice, hist.gg, ncol=2)
 x<-dev.off()
